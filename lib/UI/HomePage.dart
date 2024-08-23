@@ -65,7 +65,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Color(0xff93A5CF),
+        ),
         body: Container(
           width: width,
           height: height,
@@ -75,8 +77,18 @@ class _HomePageState extends State<HomePage> {
       tabletBody: Scaffold(
         drawer: Drawer(
           child: SafeArea(
-            child: Padding(
+            child: Container(
               padding: const EdgeInsets.only(top: 20, left: 20),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xff93A5CF),
+                    Color(0xffE4EfE9),
+                  ],
+                ),
+              ),
               child: Column(
                 children: [
                   const FlutterLogo(
@@ -158,6 +170,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         appBar: AppBar(
+          backgroundColor: Color(0xff93A5CF),
+          elevation: 0,
           title: const Text(
             "Dashboard",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -167,6 +181,16 @@ class _HomePageState extends State<HomePage> {
           padding: const EdgeInsets.all(20),
           width: width,
           height: height,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xff93A5CF),
+                Color(0xffE4EfE9),
+              ],
+            ),
+          ),
           child: Column(
             children: [
               PopupMenuButton<int>(
@@ -177,9 +201,11 @@ class _HomePageState extends State<HomePage> {
                     current.length,
                     (index) {
                       return PopupMenuItem<int>(
-                        value: index,
-                        child: Text(current[index].toString()),
-                      );
+                          value: index,
+                          child: Container(
+                            width: width,
+                            child: Text(current[index].toString()),
+                          ));
                     },
                   );
                 },
@@ -221,12 +247,23 @@ class _HomePageState extends State<HomePage> {
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      childAspectRatio: 25 / 9,
+                      childAspectRatio: 20 / 9,
                       crossAxisCount: 3),
                   itemBuilder: (context, index) {
                     return Container(
                       padding: const EdgeInsets.only(left: 10),
-                      color: ColorConstant.primaryColor,
+                      decoration: BoxDecoration(
+                        color: Color(0xff93A5CF),
+                        borderRadius: BorderRadius.circular(5),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 2,
+                              spreadRadius: 1,
+                              color: Colors.white.withOpacity(0.3),
+                              blurStyle: BlurStyle.normal,
+                              offset: Offset(1, 2)),
+                        ],
+                      ),
                       alignment: Alignment.centerLeft,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,8 +339,9 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       desktopBody: Scaffold(
-        backgroundColor: Colors.amber,
+        extendBody: true,
         appBar: AppBar(
+          backgroundColor: Color(0xff93A5CF),
           title: const Text(
             "Dashboard",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -312,6 +350,16 @@ class _HomePageState extends State<HomePage> {
         body: Container(
             // padding: const EdgeInsets.all(20),
             width: width,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xff93A5CF),
+                  Color(0xffE4EfE9),
+                ],
+              ),
+            ),
             height: height,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -321,16 +369,16 @@ class _HomePageState extends State<HomePage> {
                   child:*/
                 Container(
                   padding: EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xffFFDDE1),
-                        Color(0xffEE9CA7),
-                      ],
-                    ),
-                  ),
+                  // decoration: const BoxDecoration(
+                  //   gradient: LinearGradient(
+                  //     begin: Alignment.topLeft,
+                  //     end: Alignment.bottomRight,
+                  //     colors: [
+                  //       Color(0xff93A5CF),
+                  //       Color(0xffE4EfE9),
+                  //     ],
+                  //   ),
+                  // ),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 20, left: 0, right: 30),
                     child: Column(
@@ -413,9 +461,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                VerticalDivider(),
                 // ),
-                Gap(50),
                 Expanded(
+                    child: Padding(
+                  padding:
+                      EdgeInsets.only(right: 20, top: 20, bottom: 20, left: 20),
                   child: Column(
                     children: [
                       PopupMenuButton<int>(
@@ -469,7 +520,7 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                             children: dashboardList.map((e) {
                           return Container(
-                            width: 175,
+                            width: 170,
                             margin: const EdgeInsets.only(right: 10),
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
@@ -549,7 +600,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                ),
+                )),
               ],
             )),
       ),
