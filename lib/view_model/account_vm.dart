@@ -3,16 +3,10 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../models/AuthenticationModels/CRegisterResponse.dart';
-import '../models/Carts/AddToCartRequest.dart';
-import '../models/CategoyResponses/CategoryResponse.dart';
 import '../models/LoginResponse.dart';
 
-import '../models/StoreDetailResponse.dart';
 import '../network/ApiRepository.dart';
-
-import '../requestData/SetCurrencyRequest.dart';
-import '../requestData/loginReguest.dart';
+import '../requestData/Inovice.dart';
 
 class AccountViewModel with ChangeNotifier {
   final Repository _repository;
@@ -31,30 +25,30 @@ class AccountViewModel with ChangeNotifier {
   ///**************** Request****************
   //Register
 
-  LoginRequest? _loginRequest;
-  LoginRequest? get loginRequest {
-    return _loginRequest;
+  InoviceRequest? _inoviceRequest;
+  InoviceRequest? get inoviceRequest {
+    return _inoviceRequest;
   }
 
-  // set setLoginRequest(LoginRequest request) {
-  //   _loginRequest = request;
-  // }
+  set setInoviceRequest(InoviceRequest request) {
+    _inoviceRequest = request;
+  }
 
   // Register
-  Future<void> login(ValueSetter<bool> onResponse) async {
-    log("Account_vm login.....");
-    try {
-      final response = await _repository.login(loginRequest!);
-      _loginResponse = response;
-      onResponse(true);
-    } catch (e) {
-      log("Account_vm login catch>>>   $e");
-      _loginResponse = null;
-
-      log("loginressss $_loginResponse");
-      errorMessage = e.toString();
-      onResponse(false);
-    }
-    notifyListeners();
-  }
+  // Future<void> login(ValueSetter<bool> onResponse) async {
+  //   log("Account_vm login.....");
+  //   try {
+  //     final response = await _repository.login(loginRequest!);
+  //     _loginResponse = response;
+  //     onResponse(true);
+  //   } catch (e) {
+  //     log("Account_vm login catch>>>   $e");
+  //     _loginResponse = null;
+  //
+  //     log("loginressss $_loginResponse");
+  //     errorMessage = e.toString();
+  //     onResponse(false);
+  //   }
+  //   notifyListeners();
+  // }
 }
